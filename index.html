@@ -4,16 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weather App</title>
-  <!-- <link href="style.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script> -->
-
-  <!-- Tailwind first -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Custom CSS and JS -->
-<link rel="stylesheet" href="style.css">
-
-
+  
+  <!-- Tailwind only -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
   <script>
     tailwind.config = {
       theme: {
@@ -26,6 +20,13 @@
       }
     }
   </script>
+  
+  <style>
+    /* Minimal custom CSS for transitions */
+    .weather-transition {
+      transition: all 0.5s ease;
+    }
+  </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-primary to-secondary text-white p-5">
   <div class="max-w-md mx-auto text-center">
@@ -39,64 +40,66 @@
       >
       <button 
         onclick="getWeather()"
-        class="px-5 py-2 rounded bg-white/20 hover:bg-white/30 transition-colors"
+        class="px-5 py-3 rounded bg-white/20 hover:bg-white/30 transition-colors font-semibold"
       >
         Search
       </button>
     </div>
-    <div id="error" class="hidden text-red-300 bg-red-500/10 p-3 rounded mb-5"></div>
     
-    <!-- Default weather card (shown by default) -->
-    <div id="defaultWeatherCard" class="bg-white/10 backdrop-blur-md rounded-xl p-5 mt-5">
-      <h2 class="text-2xl font-semibold mb-4">Search for a city</h2>
+    <!-- Error Message -->
+    <div id="error" class="hidden text-red-300 bg-red-500/10 p-3 rounded mb-5 border-l-4 border-red-500"></div>
+    
+    <!-- Default Weather Card -->
+    <div id="defaultWeatherCard" class="weather-transition bg-white/10 backdrop-blur-md rounded-xl p-6 mt-5 shadow-lg">
+      <h2 class="text-2xl font-semibold mb-4 text-white/90">Search for a city</h2>
       <div class="flex justify-between items-center mb-6">
-        <div>
-          <div class="text-5xl font-bold">--°C</div>
-          <div class="capitalize">Weather information will appear here</div>
+        <div class="text-left">
+          <div class="text-5xl font-bold text-white/70">--°C</div>
+          <div class="capitalize text-white/70 mt-2">Weather information will appear here</div>
         </div>
-        <div class="w-20 h-20 flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 opacity-70">
+        <div class="w-20 h-20 flex items-center justify-center opacity-50">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
           </svg>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <div class="bg-white/10 p-3 rounded">
-          <div class="font-medium">Humidity</div>
-          <div>--%</div>
+        <div class="bg-white/10 p-3 rounded text-left">
+          <div class="font-medium text-white/90">Humidity</div>
+          <div class="text-white/70">--%</div>
         </div>
-        <div class="bg-white/10 p-3 rounded">
-          <div class="font-medium">Wind Speed</div>
-          <div>-- m/s</div>
+        <div class="bg-white/10 p-3 rounded text-left">
+          <div class="font-medium text-white/90">Wind Speed</div>
+          <div class="text-white/70">-- m/s</div>
         </div>
       </div>
     </div>
     
-    <!-- Actual weather card (hidden by default) -->
-    <div id="weatherCard" class="hidden bg-white/10 backdrop-blur-md rounded-xl p-5 mt-5">
-      <h2 id="cityName" class="text-2xl font-semibold mb-4"></h2>
+    <!-- Actual Weather Card -->
+    <div id="weatherCard" class="weather-transition hidden bg-white/10 backdrop-blur-md rounded-xl p-6 mt-5 shadow-lg">
+      <h2 id="cityName" class="text-2xl font-semibold mb-4 text-white/90"></h2>
       <div class="flex justify-between items-center mb-6">
-        <div>
+        <div class="text-left">
           <div id="temperature" class="text-5xl font-bold"></div>
-          <div id="description" class="capitalize"></div>
+          <div id="description" class="capitalize mt-2 text-white/90"></div>
         </div>
         <img id="weatherIcon" src="" alt="Weather icon" class="w-20 h-20">
       </div>
       <div class="grid grid-cols-2 gap-3">
-        <div class="bg-white/10 p-3 rounded">
-          <div class="font-medium">Humidity</div>
-          <div id="humidity"></div>
+        <div class="bg-white/10 p-3 rounded text-left">
+          <div class="font-medium text-white/90">Humidity</div>
+          <div id="humidity" class="text-white/90"></div>
         </div>
-        <div class="bg-white/10 p-3 rounded">
-          <div class="font-medium">Wind Speed</div>
-          <div id="windSpeed"></div>
+        <div class="bg-white/10 p-3 rounded text-left">
+          <div class="font-medium text-white/90">Wind Speed</div>
+          <div id="windSpeed" class="text-white/90"></div>
         </div>
       </div>
     </div>
   </div>
-  <!-- <script src="app.js"></script> -->
-   <script src="app.js"></script>
+  
+    <script src="app.js"></script>
 
 </body>
 </html>
