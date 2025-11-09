@@ -4,30 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weather App</title>
-  
-  <!-- Tailwind only -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#1E3A8A',
-            secondary: '#3B82F6',
-          }
-        }
-      }
-    }
-  </script>
+<link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌤️</text></svg>">  
+  <!-- Local Tailwind CSS -->
+  <link href="dist/output.css" rel="stylesheet">
   
   <style>
-    /* Minimal custom CSS for transitions */
     .weather-transition {
       transition: all 0.5s ease;
     }
   </style>
 </head>
+
 <body class="min-h-screen bg-gradient-to-br from-primary to-secondary text-white p-5">
   <div class="max-w-md mx-auto text-center">
     <h1 class="text-3xl font-bold mb-8">Weather App</h1>
